@@ -13,8 +13,14 @@ let plane_animate_side = 0;
 
 
 let plane;
-let speed = 0.5;
+const minSpeed = 1;
+const maxSpeed = 3;
+let speed = minSpeed;
+let speedMultiplicator = 1;
 
+if(window.innerWidth > window.innerHeight) {
+    speedMultiplicator = 0.3;
+}
 
 function createScene() {
     
@@ -167,17 +173,17 @@ engine.runRenderLoop(function () {
         }
     }
 
-    if(shiftDown && speed <= 3.0) {
+    if(shiftDown && speed <= maxSpeed) {
         speed += 0.02;
-    } else if(!shiftDown && speed > 1.0) {
+    } else if(!shiftDown && speed > minSpeed) {
         speed -= 0.02;
     }
 
 
     /* fly forward */
     if (plane) {
-        plane.rotation = new BABYLON.Vector3(plane_rotate_up, plane_rotate_side, plane_animate_side);
-        plane.movePOV(0,0,speed*0.1);
+        plane.rotation = new BABYLON.Vector3(plane_rotate_up*speedMultiplicator, plane_rotate_side*speedMultiplicator, plane_animate_side*speedMultiplicator);
+        plane.movePOV(0,0,(speed*0.1)*speedMultiplicator);
     }
     
     scene.render();
