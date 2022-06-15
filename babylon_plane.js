@@ -13,7 +13,7 @@ let plane_animate_side = 0;
 
 
 let plane;
-let speed = 1.0;
+let speed = 0.5;
 
 
 function createScene() {
@@ -167,11 +167,11 @@ engine.runRenderLoop(function () {
         }
     }
 
-    /*if(shiftDown && speed <= 3.0) {
+    if(shiftDown && speed <= 3.0) {
         speed += 0.02;
     } else if(!shiftDown && speed > 1.0) {
         speed -= 0.02;
-    }*/
+    }
 
 
     /* fly forward */
