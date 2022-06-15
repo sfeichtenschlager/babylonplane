@@ -19,7 +19,7 @@ let speed = minSpeed;
 let speedMultiplicator = 1;
 
 if(window.innerHeight > window.innerWidth) {
-    speedMultiplicator = 0.15;
+    speedMultiplicator = 0.35;
 }
 
 function createScene() {
@@ -182,7 +182,7 @@ engine.runRenderLoop(function () {
 
     /* fly forward */
     if (plane) {
-        plane.rotation = new BABYLON.Vector3(plane_rotate_up*speedMultiplicator, plane_rotate_side*speedMultiplicator, plane_animate_side*speedMultiplicator);
+        plane.rotation = new BABYLON.Vector3(plane_rotate_up*speedMultiplicator, plane_rotate_side*speedMultiplicator, plane_animate_side);
         plane.movePOV(0,0,speed*0.1);
     }
     
@@ -255,13 +255,13 @@ function keyListenerUp(e){
     if (e.keyCode == 37){ // leftArrow
         leftArrow = false;
         if(plane_animate_side < 0) {
-            plane_animate_side += 0.02*speedMultiplicator;
+            plane_animate_side += 0.02;
         }
     }
     if (e.keyCode == 65){ // a
         leftArrow = false;
         if(plane_animate_side < 0) {
-            plane_animate_side += 0.02*speedMultiplicator;
+            plane_animate_side += 0.02;
         }
     }
     if (e.keyCode == 38){ // upArrow
@@ -276,7 +276,7 @@ function keyListenerUp(e){
     if (e.keyCode == 68){ // d
         rightArrow = false;
         if(plane_animate_side > 0) {
-            plane_animate_side -= 0.02*speedMultiplicator;
+            plane_animate_side -= 0.02;
         }
     }
     if (e.keyCode == 40){ // downArrow
