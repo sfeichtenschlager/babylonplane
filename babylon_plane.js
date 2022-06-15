@@ -18,7 +18,7 @@ const maxSpeed = 3;
 let speed = minSpeed;
 let speedMultiplicator = 1;
 
-if(window.innerWidth > window.innerHeight) {
+if(window.innerHeight > window.innerWidth) {
     speedMultiplicator = 0.3;
 }
 
