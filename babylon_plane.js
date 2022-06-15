@@ -255,13 +255,13 @@ function keyListenerUp(e){
     if (e.keyCode == 37){ // leftArrow
         leftArrow = false;
         if(plane_animate_side < 0) {
-            plane_animate_side += 0.02;
+            plane_animate_side += 0.02*speedMultiplicator;
         }
     }
     if (e.keyCode == 65){ // a
         leftArrow = false;
         if(plane_animate_side < 0) {
-            plane_animate_side += 0.02;
+            plane_animate_side += 0.02*speedMultiplicator;
         }
     }
     if (e.keyCode == 38){ // upArrow
@@ -276,7 +276,7 @@ function keyListenerUp(e){
     if (e.keyCode == 68){ // d
         rightArrow = false;
         if(plane_animate_side > 0) {
-            plane_animate_side -= 0.02;
+            plane_animate_side -= 0.02*speedMultiplicator;
         }
     }
     if (e.keyCode == 40){ // downArrow
