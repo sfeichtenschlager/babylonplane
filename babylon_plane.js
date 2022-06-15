@@ -19,7 +19,7 @@ let speed = minSpeed;
 let speedMultiplicator = 1;
 
 if(window.innerHeight > window.innerWidth) {
-    speedMultiplicator = 0.1;
+    speedMultiplicator = 0.02;
 }
 
 function createScene() {
