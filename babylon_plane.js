@@ -183,7 +183,7 @@ engine.runRenderLoop(function () {
     /* fly forward */
     if (plane) {
         plane.rotation = new BABYLON.Vector3(plane_rotate_up*speedMultiplicator, plane_rotate_side*speedMultiplicator, plane_animate_side*speedMultiplicator);
-        plane.movePOV(0,0,speed*0.1);
+        plane.movePOV(0,0,speed*0.15);
     }
     
     scene.render();
