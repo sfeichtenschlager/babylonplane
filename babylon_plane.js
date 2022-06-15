@@ -19,7 +19,7 @@ let speed = minSpeed;
 let speedMultiplicator = 1;
 
 if(window.innerHeight > window.innerWidth) {
-    speedMultiplicator = 0.3;
+    speedMultiplicator = 0.1;
 }
 
 function createScene() {
@@ -183,7 +183,7 @@ engine.runRenderLoop(function () {
     /* fly forward */
     if (plane) {
         plane.rotation = new BABYLON.Vector3(plane_rotate_up*speedMultiplicator, plane_rotate_side*speedMultiplicator, plane_animate_side*speedMultiplicator);
-        plane.movePOV(0,0,speed*0.15);
+        plane.movePOV(0,0,speed*0.1);
     }
     
     scene.render();
