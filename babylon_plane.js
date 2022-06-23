@@ -14,7 +14,7 @@ let plane_animate_side = 0;
 
 let plane;
 const minSpeed = 1;
-const maxSpeed = 3;
+const maxSpeed = 10;
 let speed = minSpeed;
 let speedMultiplicator = 1;
 
@@ -23,7 +23,7 @@ if(window.innerHeight > window.innerWidth) {
 }
 
 function createScene() {
-    
+
     // Scene and Camera
     let scene = new BABYLON.Scene(engine);
 
@@ -31,7 +31,7 @@ function createScene() {
     // This creates and initially positions a follow camera 	
     let camera = new BABYLON.FollowCamera("FollowCam", new BABYLON.Vector3(0, 5, 30), scene);
 	
-	//The goal distance of camera from target
+	// The goal distance of camera from target
 	camera.radius = 0.1;
 	
 	// The goal height of camera above local origin (centre) of target
@@ -40,11 +40,11 @@ function createScene() {
 	// The goal rotation of camera around local origin (centre) of target in x y plane
 	camera.rotationOffset = 180;
 	
-	//Acceleration of camera in moving from current to goal position
-	camera.cameraAcceleration = 0.005
-	
-	//The speed at which acceleration is halted 
-	camera.maxCameraSpeed = 10
+	// Acceleration of camera in moving from current to goal position
+	camera.cameraAcceleration = 0.005*speed;
+
+	// The speed at which acceleration is halted 
+	camera.maxCameraSpeed = 10*maxSpeed;
 	
     //camera.attachControl(canvas, true);
 
@@ -81,38 +81,110 @@ function createScene() {
     });
 
     const groundMat = new BABYLON.StandardMaterial("groundMat");
-    groundMat.diffuseTexture = new BABYLON.Texture("https://www.babylonjs-playground.com/textures/grass.png")
+    groundMat.diffuseTexture = new BABYLON.Texture("https://www.babylonjs-playground.com/textures/skybox4_ny.jpg")
 
-    let ground = BABYLON.Mesh.CreateGround("ground1", 2000, 2000, 0, scene);
+    let ground = BABYLON.Mesh.CreateGround("ground1", 1000, 1000, 0, scene);
     ground.material = groundMat;
 
-    for (let index = -50; index < 50; index++) {
+    for (let index = -100; index < 100; index++) {
         let sphere;
         sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter: 2, segments: 32}, scene);
-        sphere.position.y = 0;
-        sphere.position.z = 20*index;
+        let sphereX = (Math.random() * 20) + 1;
+        let sphereY = (Math.random() * 500) + 1;
+        let sphereZ = (Math.random() * 20) + 1;
+        sphere.position.x = (index/5)*sphereX;
+        sphere.position.y = sphereY;
+        sphere.position.z = (index/5)*sphereZ;
         let groundMaterial = new BABYLON.StandardMaterial("Ground Material", scene);
         sphere.material = groundMaterial;
         sphere.material.diffuseColor = BABYLON.Color3.Yellow();   
     }
-    for (let index = -50; index < 50; index++) {
+    for (let index = -100; index < 100; index++) {
         let sphere;
         sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter: 2, segments: 32}, scene);
-        sphere.position.y = 0;
-        sphere.position.x = 20*index;
+        let sphereX = (Math.random() * 20) + 1;
+        let sphereY = (Math.random() * 500) + 1;
+        let sphereZ = (Math.random() * 20) + 1;
+        sphere.position.x = (index/5)*sphereX;
+        sphere.position.y = sphereY;
+        sphere.position.z = (index/5)*sphereZ;
         let groundMaterial = new BABYLON.StandardMaterial("Ground Material", scene);
         sphere.material = groundMaterial;
         sphere.material.diffuseColor = BABYLON.Color3.Red();   
+    }
+    for (let index = 0; index < 200; index++) {
+        let sphere;
+        sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter: 2, segments: 32}, scene);
+        let sphereX = (Math.random() * 20)  + 1;
+        let sphereY = (Math.random() * 500) + 1;
+        let sphereZ = (Math.random() * -20) - 1;
+        sphere.position.x = -(index/5)*sphereX;
+        sphere.position.y = sphereY;
+        sphere.position.z = -(index/5)*sphereZ;
+        let groundMaterial = new BABYLON.StandardMaterial("Ground Material", scene);
+        sphere.material = groundMaterial;
+        sphere.material.diffuseColor = BABYLON.Color3.Blue();   
+    }
+    for (let index = 0; index < 200; index++) {
+        let sphere;
+        sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter: 2, segments: 32}, scene);
+        let sphereX = (Math.random() * 20) + 1;
+        let sphereY = (Math.random() * 500) + 1;
+        let sphereZ = (Math.random() * -20) - 1;
+        sphere.position.x = (index/5)*sphereX;
+        sphere.position.y = sphereY;
+        sphere.position.z = (index/5)*sphereZ;
+        let groundMaterial = new BABYLON.StandardMaterial("Ground Material", scene);
+        sphere.material = groundMaterial;
+        sphere.material.diffuseColor = BABYLON.Color3.Green();   
+    }
+    for (let index = 0; index < 200; index++) {
+        let sphere;
+        sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter: 2, segments: 32}, scene);
+        let sphereX = (Math.random() * 20)  + 1;
+        let sphereY = (Math.random() * 500) + 1;
+        let sphereZ = (Math.random() * -20) - 1;
+        sphere.position.x = -(index/5)*sphereX;
+        sphere.position.y = sphereY;
+        sphere.position.z = -(index/5)*sphereZ;
+        let groundMaterial = new BABYLON.StandardMaterial("Ground Material", scene);
+        sphere.material = groundMaterial;
+        sphere.material.diffuseColor = BABYLON.Color3.Gray();   
+    }
+    for (let index = 0; index < 200; index++) {
+        let sphere;
+        sphere = BABYLON.MeshBuilder.CreateSphere("sphere", {diameter: 2, segments: 32}, scene);
+        let sphereX = (Math.random() * 20) + 1;
+        let sphereY = (Math.random() * 500) + 1;
+        let sphereZ = (Math.random() * -20) - 1;
+        sphere.position.x = (index/5)*sphereX;
+        sphere.position.y = sphereY;
+        sphere.position.z = (index/5)*sphereZ;
+        let groundMaterial = new BABYLON.StandardMaterial("Ground Material", scene);
+        sphere.material = groundMaterial;
+        sphere.material.diffuseColor = BABYLON.Color3.Purple();   
     }
 
     var skybox = BABYLON.MeshBuilder.CreateBox("skyBox", {size:1000.0}, scene);
 	var skyboxMaterial = new BABYLON.StandardMaterial("skyBox", scene);
 	skyboxMaterial.backFaceCulling = false;
-	skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("https://playground.babylonjs.com/textures/skybox", scene);
+	skyboxMaterial.reflectionTexture = new BABYLON.CubeTexture("https://playground.babylonjs.com/textures/skybox3", scene);
 	skyboxMaterial.reflectionTexture.coordinatesMode = BABYLON.Texture.SKYBOX_MODE;
 	skyboxMaterial.diffuseColor = new BABYLON.Color3(0, 0, 0);
 	skyboxMaterial.specularColor = new BABYLON.Color3(0, 0, 0);
 	skybox.material = skyboxMaterial;			
+
+
+    var dashboard = BABYLON.Mesh.CreateGround("ground1", 2, 5, 2, scene);
+	dashboard.position.y -= 2;
+	dashboard.position.z += 5;
+	dashboard.parent = camera;
+
+    const dashboardMat = new BABYLON.StandardMaterial("groundMat");
+    dashboardMat.diffuseTexture = new BABYLON.Texture("https://www.babylonjs-playground.com/textures/crate.png");
+    dashboard.material = dashboardMat;
+    dashboard.diffuseTexture = dashboardMat;
+
 
     return scene;
 
